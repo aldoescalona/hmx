@@ -1,0 +1,102 @@
+<div class="card">
+  <div class="card-body">
+
+    <div class="row mt-2">
+      <div class="col-sm-12 col-lg-8">
+        <form #f="ngForm" ngNativeValidate (ngSubmit)="registrarFicha(f)">
+
+
+          <h5>Datos del cliente</h5>
+          <div class="form-group">
+            <label for="ctenombre">Nombre</label>
+            <input [(ngModel)]="ficha.cliente.nombre" id="ctenombre" name="ctenombre" type="text" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="ctecorreo">Correo</label>
+            <input [(ngModel)]="ficha.cliente.correo" id="ctecorreo" name="ctecorreo" type="email" class="form-control" required>
+          </div>
+
+          <hr>
+          <h5>Datos del establecimiento</h5>
+          <div class="form-group">
+            <input [(ngModel)]="ficha.lugar.nombre" id="lgrnombre" name="lgrnombre" type="text" class="form-control" required>
+            <label class="form-control-placeholder" for="lgrnombre">Nombre</label>
+          </div>
+
+          <div class="form-group">
+              <input [(ngModel)]="ficha.lugar.alias" id="alias" name="alias" type="text" class="form-control" required>
+              <label class="form-control-placeholder" for="alias">Alias</label>
+            </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="ficha.lugar.direccion" id="direccion" name="direccion" type="text" class="form-control" required>
+            <label class="form-control-placeholder" for="direccion">Dirección</label>
+          </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="ficha.lugar.descripcion" id="descripcion" name="descripcion" type="text" class="form-control" required>
+            <label class="form-control-placeholder" for="descripcion">Descripción</label>
+          </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="ficha.lugar.telefono" id="telefono" name="telefono" type="text" class="form-control" required>
+            <label class="form-control-placeholder" for="telefono">Teléfono</label>
+          </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="ficha.lugar.sitioWeb" id="sitioWeb" name="sitioWeb" type="text" class="form-control" required>
+            <label class="form-control-placeholder" for="sitioWeb">Sitio Web</label>
+          </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="ficha.lugar.correo" id="correo" name="correo" type="text" class="form-control">
+            <label class="form-control-placeholder" for="correo">Correo electrónico</label>
+          </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="ficha.lugar.ubicacionUrl" id="ubicacionUrl" name="ubicacionUrl" type="text" class="form-control">
+            <label class="form-control-placeholder" for="ubicacionUrl">URL Ubicación</label>
+          </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="ficha.lugar.ubicacionLng" id="ubicacionLng" name="ubicacionLng" type="text" class="form-control">
+            <label class="form-control-placeholder" for="ubicacionLng">Longitud de Geolocalización</label>
+          </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="ficha.lugar.ubicacionLtd" id="ubicacionLtd" name="ubicacionLtd" type="text" class="form-control">
+            <label class="form-control-placeholder" for="ubicacionLtd">Latitud de Geolocalización</label>
+          </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="ficha.lugar.precioMin" id="precioMin" name="precioMin" type="text" class="form-control" required>
+            <label class="form-control-placeholder" for="precioMin">Precio mínimo de un articulo </label>
+          </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="ficha.lugar.precioMax" id="precioMax" name="precioMax" type="text" class="form-control" required>
+            <label class="form-control-placeholder" for="precioMax">Precio máximo de un articulo </label>
+          </div>
+
+          <hr>
+          <h5>Datos del operador</h5>
+          <div class="form-group">
+            <label for="oprnombre">Nombre</label>
+            <input [(ngModel)]="ficha.operador.nombre" id="oprnombre" name="oprnombre" type="text" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="clave">Clave</label>
+            <input [(ngModel)]="ficha.operador.clave" id="clave" name="clave" type="text" class="form-control" required pattern="[a-z]{1,15}" title="Clave debe contener minusculas sin espacios ejemplo: john">
+          </div>
+
+          <button type="submit" class="btn btn-primary waves-effect waves-light m-r-10">
+            <i class="fa fa-save"></i>
+            Guardar
+          </button>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

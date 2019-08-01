@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <span class="navbar-brand" ><i class="fa fa-address-card fa-2x text-dark"></i></span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/pages/dashboard" >Inicio <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/pages/rechazo" href="#">Rechazo masivo</a>
+      </li>
+    </ul>
+
+    <form ngNativeValidate #f="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="buscar(f)">
+      <input  [(ngModel)]="termino" name="termino" class="form-control mr-sm-2" type="search" placeholder="Ticket / Folio" aria-label="Search" required="required">
+      <button type="submit" class="btn btn-outline-success my-2 my-sm-0" >Buscar</button>
+    </form>
+    <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle fa-2x"></i></a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a routerLink="/pages/perfil" class="dropdown-item">Operador</a>
+                <a routerLink="/pages/cambiapaz" class="dropdown-item">Cambiar contraseña</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item nav-pointer" (click)=salir()>Salir</a>
+            </div>
+        </li>
+    </ul>
+  </div>
+</nav>

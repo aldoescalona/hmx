@@ -1,0 +1,121 @@
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" [ngClass]="toggleClass">
+        <div class="sidebar-header">
+            <h3>Históricos MX Admin</h3>
+        </div>
+
+        <ul class="list-unstyled" *ngIf="adminService.lugar">
+            <li routerLinkActive="active">
+                <a (click)="irDashboard()">
+                    <i class="fas fa-fw px-1 fa-arrow-left"></i>
+                    <span>Inicio</span>
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/pages/lugar">
+                    <i class="fas fa-fw px-4 fa-store"></i>
+                    <span>{{adminService.lugar.nombre}}</span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="list-unstyled components" *ngFor="let m of adminService.menu; let j = index">
+
+            <p>{{m.nombre}}</p>
+
+            <li *ngFor="let sm of m.hijos; let i = index" routerLinkActive="active">
+
+                <a *ngIf="!sm.nietos" [routerLink]="[ sm.url ]">
+                    <i [class]="'fas fa-fw ' + sm.icono"></i>
+                    <span>{{sm.nombre}}</span>
+                </a>
+
+                <a *ngIf="sm.nietos" [attr.data-target]="'#homeSubmenu' + i + '-' + j" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i [class]="'fas fa-fw ' + sm.icono"></i>
+                    <span> {{sm.nombre}}</span>
+
+                </a>
+                <ul *ngIf="sm.nietos" class="collapse list-unstyled" [id]="'homeSubmenu' + i + '-' + j">
+                    <li *ngFor="let n of sm.nietos">
+                        <a href="#">{{n.nombre}}</a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+        </ul>
+
+
+        <ul class="list-unstyled CTAs">
+
+            <li>
+                <a (click)="salir()" class="article, nav-pointer">Salir</a>
+            </li>
+        </ul>
+        <!-- 
+        <ul class="list-unstyled CTAs">
+            <li>
+                <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+            </li>
+            <li>
+                <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+            </li>
+        </ul> -->
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info" (click)=toggleMenu()>
+                    <i class="fas fa-align-left"></i>
+
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <!--<li class="nav-item active">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-money-bill-alt"></i>
+                            </a>
+                        </li>-->
+
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-lg-inline text-gray-600 small" *ngIf="!cargandoCliente">{{cliente.nombre}}</span>
+                                <i class="fas fa-user"></i>
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated fadeIn" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" routerLink="/pages/perfil">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Perfil
+                                </a>
+                                <a class="dropdown-item" routerLink="/pages/preferencias">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Preferncias
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item nav-pointer" (click)="salir()" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Salir
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <router-outlet></router-outlet>
+    </div>
+</div>

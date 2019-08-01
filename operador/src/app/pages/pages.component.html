@@ -1,0 +1,14 @@
+<app-menubar></app-menubar>
+<div class="container">
+    <div class="row" *ngIf="operadorService.lugar">
+        <div class="col-2" >
+            <img *ngIf="operadorService.lugar.imagenLogoId" [src]="operadorService.lugar.imagenLogoId.imgA | imagen" class="rounded-circle img-fluid avatar" alt="...">
+        </div>
+        <div class="col-10">
+            {{operadorService.lugar.nombre}}
+        </div>
+    </div>
+</div>
+
+
+<router-outlet></router-outlet>

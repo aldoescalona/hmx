@@ -1,0 +1,140 @@
+<h2>
+  {{clienteService.lugar.nombre}}
+</h2>
+
+<div class="row" *ngIf="lugar">
+
+  <div class="col-xl-10 mt-4">
+    <div class="card shadow d-4">
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <button (click)="editarLugar()" class="btn btn-primary waves-effect waves-light m-r-10">
+          <i class="fa fa-edit"></i>
+          Editar
+        </button>
+      </div>
+      <div class="card-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-sm-4">
+              <span>Nombre:</span>
+            </div>
+            <div class="col-12 col-sm-8">
+              <p>{{lugar.nombre}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-sm-4">
+              <span>Alias:</span>
+            </div>
+            <div class="col-12 col-sm-8">
+              <p>{{lugar.alias}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-sm-4">
+              <span>Descripción:</span>
+            </div>
+            <div class="col-12 col-sm-8">
+              <p>{{lugar.descripcion}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-sm-4">
+              <span>Domicilio:</span>
+            </div>
+            <div class="col-12 col-sm-8">
+              <p>{{lugar.direccion}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-sm-4">
+              <span>Teléfono:</span>
+            </div>
+            <div class="col-12 col-sm-8">
+              <p>{{lugar.telefono}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-sm-4">
+              <span>Sitio web:</span>
+            </div>
+            <div class="col-12 col-sm-8">
+              <p>{{lugar.sitioWeb}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-sm-4">
+              <span>Correo:</span>
+            </div>
+            <div class="col-12 col-sm-8">
+              <p>{{lugar.correo}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-sm-4">
+              <span>URL Ubicación:</span>
+            </div>
+            <div class="col-12 col-sm-8">
+              <p>{{lugar.ubicacionUrl}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-sm-4">
+              <span>Longitud de Geolocalización:</span>
+            </div>
+            <div class="col-12 col-sm-8">
+              <p>{{lugar.ubicacionLng}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-sm-4">
+              <span>Latitud de Geolocalización:</span>
+            </div>
+            <div class="col-12 col-sm-8">
+              <p>{{lugar.ubicacionLtd}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row mt-2" *ngIf="lugar">
+  <div class="col-6 col-sm-4">
+    <div class="card shadow">
+
+      <div class="card-body">
+        <div class="text-center">
+          <!--<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">-->
+          <img *ngIf="lugar.imagenLogoId" (click)="cambiarFotoLogo()" [src]="lugar.imagenLogoId.imgC | imagen" class="img-fluid nav-pointer">
+          <img *ngIf="!lugar.imagenLogoId" (click)="cambiarFotoLogo()" [src]="'assets/img/empty-photo.jpg' | recurso" class="img-fluid nav-pointer">
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="col-6 col-sm-4">
+    <div class="card shadow">
+
+      <div class="card-body">
+        <div class="text-center">
+          <img *ngIf="lugar.imagenPortadaId" (click)="cambiarFotoPortada()" [src]="lugar.imagenPortadaId.imgC | imagen" class="img-fluid nav-pointer">
+          <img *ngIf="!lugar.imagenPortadaId" (click)="cambiarFotoPortada()" [src]="'assets/img/empty-photo.jpg' | recurso" class="img-fluid nav-pointer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-imagen-modal></app-imagen-modal>

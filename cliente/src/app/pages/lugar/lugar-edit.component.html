@@ -1,0 +1,71 @@
+<div class="card">
+  <div class="card-body">
+
+
+    <div class="row" *ngIf="lugar">
+      <div class="col-sm-12 col-lg-8">
+        <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarLugar(f)">
+
+
+          <div class="form-group">
+            <input [(ngModel)]="lugar.direccion" id="direccion" name="direccion" type="text" class="form-control" required>
+            <label class="form-control-placeholder" for="direccion">Dirección</label>
+          </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="lugar.descripcion" id="descripcion" name="descripcion" type="text" class="form-control" required>
+            <label class="form-control-placeholder" for="descripcion">Descripción</label>
+          </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="lugar.telefono" id="telefono" name="telefono" type="text" class="form-control" required>
+            <label class="form-control-placeholder" for="telefono">Teléfono</label>
+          </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="lugar.sitioWeb" id="sitioWeb" name="sitioWeb" type="text" class="form-control" required>
+            <label class="form-control-placeholder" for="sitioWeb">Sitio Web</label>
+          </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="lugar.correo" id="correo" name="correo" type="text" class="form-control">
+            <label class="form-control-placeholder" for="correo">Correo electrónico</label>
+          </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="lugar.ubicacionUrl" id="ubicacionUrl" name="ubicacionUrl" type="text" class="form-control">
+            <label class="form-control-placeholder" for="ubicacionUrl">URL Ubicación</label>
+          </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="lugar.ubicacionLng" id="ubicacionLng" name="ubicacionLng" type="text" class="form-control">
+            <label class="form-control-placeholder" for="ubicacionLng">Longitud de Geolocalización</label>
+          </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="lugar.ubicacionLtd" id="ubicacionLtd" name="ubicacionLtd" type="text" class="form-control">
+            <label class="form-control-placeholder" for="ubicacionLtd">Latitud de Geolocalización</label>
+          </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="lugar.precioMin" id="precioMin" name="precioMin" type="text" class="form-control" required>
+            <label class="form-control-placeholder" for="precioMin">Precio mínimo de un articulo </label>
+          </div>
+
+          <div class="form-group">
+            <input [(ngModel)]="lugar.precioMax" id="precioMax" name="precioMax" type="text" class="form-control" required>
+            <label class="form-control-placeholder" for="precioMax">Precio máximo de un articulo </label>
+          </div>
+
+
+          <button type="submit" class="btn btn-primary waves-effect waves-light m-r-10">
+            <i class="fa fa-save"></i>
+            Guardar
+          </button>
+          <a routerLink="/pages/lugar" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

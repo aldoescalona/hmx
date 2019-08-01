@@ -1,0 +1,57 @@
+<div>
+  <h3>
+    Rechazo masivo
+  </h3>
+</div>
+<div class="container">
+
+  <div class="mt-5">
+    <div class="row" *ngIf="cargando">
+      <div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="w25" scope="col">
+              <input type="checkbox" [(ngModel)]="masterSelected" name="list_name" value="m1" (change)="checkUncheckAll()" /> </th>
+            <th class="w110" scope="col">Ticket</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Monto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of visitas">
+            <th scope="row">
+              <input type="checkbox" [(ngModel)]="item.sel" name="list_name" value="{{item.id}}" (change)="isAllSelected()" />
+            </th>
+            <td>
+              <div class="btn btn-block" [ngClass]="{
+                        'btn-success':item.estado == 'ACEPTADO' || item.estado == 'ACEPTADO_AUTOMATICO',
+                        'btn-danger':item.estado == 'RECHAZADA',
+                        'btn-info':item.estado == 'PENDIENTE'
+                      }">
+                {{item.ticket}}
+              </div>
+            </td>
+            <td>{{item.usuarioId.nombre}}</td>
+            <td>{{item.fecha | date:'d MMM yy hh:mm'}}</td>
+            <td>{{item.monto | currency:'MXN'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="mt-1">
+    <div class="row">
+      <button (click)=preRechazar() class="btn btn-danger btn-sm float-right" [disabled]="cargando">
+        <i class="fa fa-times"></i> Rechazar</button>
+    </div>
+  </div>
+</div>

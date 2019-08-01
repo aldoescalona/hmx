@@ -1,0 +1,43 @@
+<div class="card">
+  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <h3 *ngIf="administrados == true">Establecimientos</h3>
+    <h3 *ngIf="administrados == false">Lugares de dominio público</h3>
+    <button (click)="nuevoLugarPublico()" class="btn btn-primary waves-effect waves-light m-r-10" *ngIf="administrados == false">
+      <i class="fa fa-edit"></i>
+      Nuevo
+    </button>
+  </div>
+  <div class="card-body">
+
+    <div class="row">
+      <div class="col">
+        <table class="table table-hover mt-4" *ngIf="lugares.length > 0">
+          <thead>
+            <tr>
+              <th scope="col">No. Esto</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Estado</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr (click)="verLugar(lg)" *ngFor="let lg of lugares">
+              <td>{{lg.id}}</td>
+              <td>{{lg.nombre}}</td>
+              <td>
+                <span class="badge" [ngClass]="{
+                  'btn-success':lg.estado == 'ACTIVO',
+                  'btn-danger':lg.estado == 'INACTIVO' || lg.estado == 'SUSPENDIDO',
+                  'btn-info':lg.estado == 'PENDIENTE'
+                }">{{lg.estado}}</span>
+              </td>
+              <td>
+                <img *ngIf="lg.imagenLogoId" class="rounded-circle img80" [src]="lg.imagenLogoId.imgA | imagen" alt="">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

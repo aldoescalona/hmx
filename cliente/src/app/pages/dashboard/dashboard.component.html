@@ -1,0 +1,22 @@
+<app-header titulo="Inicio" [cargando]="cargando"></app-header>
+
+<h4>Mis establecimientos</h4>
+<div class="row">
+
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-12 col-md-8 mb-4" *ngFor="let lugar of lugares">
+    <div class="card border-left-primary shadow h-100 py-2 nav-pointer" (click)="verLugar(lugar)">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-primary mb-1">{{lugar.alias}}</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{lugar.nombre}}</div>
+          </div>
+          <div class="col-auto">
+            <img *ngIf="lugar.imagenLogoId" class="rounded-circle img80" [src]="lugar.imagenLogoId.imgA | imagen" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

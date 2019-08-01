@@ -1,0 +1,57 @@
+<h2>Eventos</h2>
+<div class="row">
+
+  <div class="col-sm-12 col-lg-10 mb-4">
+    <div class="card shadow d-4">
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <button (click)="nuevoEvento()" class="btn btn-primary waves-effect waves-light m-r-10">
+          <i class="fa fa-plus"></i>
+          Nuevo
+        </button>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th style="width: 12%"></th>
+                <th style="width: auto">Evento</th>
+                <th style="width: auto">Fecha</th>
+                <th style="width: 20%"></th>
+              </tr>
+            </thead>
+
+            <tbody *ngIf="eventos">
+              <tr *ngFor="let evento of eventos">
+                <td class="p-1">
+                  <img *ngIf="evento.imagenId" class="img-fluid rounded-circle" [src]="evento.imagenId.imgA | imagen" alt="">
+                </td>
+                <td>
+                  <h5>
+                    {{evento.titulo}}
+                  </h5>
+                </td>
+                <td>
+                  <P>
+                    {{evento.fechaInicio | date :'dd-MMM-yy h:mm a'}}
+                  </P>
+                  <P>
+                    {{evento.fechaFin | date :'dd-MMM-yy h:mm a'}}
+                  </P>
+                </td>
+                <td class="p-1">
+                  <button [routerLink]="['/pages/evento', evento.id]" class="btn btn-sm btn-primary">
+                    <i class="fa fa-edit"></i>
+                  </button>
+                  <button (click)="borrarEvento( evento )" class="btn btn-sm btn-danger">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

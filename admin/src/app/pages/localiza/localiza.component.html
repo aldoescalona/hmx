@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-body">
+      <h5>Localización</h5>
+      <div class="row">
+        <div class="col-sm-12 col-lg-8">
+          <form ngNativeValidate (ngSubmit)="buscarCP()">
+            <div class="form-inline">
+              <input [(ngModel)]="cp" id="cp" name="cp" type="text" class="form-control" placeholder="Código postal" aria-label="Buscar" required>
+              <button type="submit" class="btn btn-primary my-2 my-sm-0" >Buscar</button>
+            </div>
+          </form>
+          <table class="table table-hover mt-4" *ngIf="codigos.length > 0">
+              <thead>
+                <tr>
+                  <th scope="col">Código</th>
+                  <th scope="col">Asentamiento</th>
+                  <th scope="col">Tipo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr (click)="preparaRegistro(c)" *ngFor="let c of codigos">
+                  <td>{{c.codigo}}</td>
+                  <td>{{c.asentamiento}}</td>
+                  <td>{{c.tipoAsentamientoId.tipo}}</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+</div>

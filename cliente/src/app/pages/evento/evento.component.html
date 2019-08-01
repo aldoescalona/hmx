@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="card-body">
+
+
+    <div class="row">
+      <div class="col-sm-12 col-lg-8">
+        <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarEvento(f)">
+
+
+          <div class="form-group">
+            <input [(ngModel)]="evento.titulo" id="nombre" name="nombre" type="text" class="form-control" required>
+            <label class="form-control-placeholder" for="nombre">Titulo</label>
+          </div>
+          <div class="form-group">
+            <label for="fechaInicio">Fecha Inicio</label>
+            <input [ngModel]="evento.fechaInicio | date:'yyyy-MM-ddTHH:mm'" (ngModelChange)="evento.fechaInicio = dateChanged($event)" id="fechaInicio" name="fechaInicio" type="datetime-local" class="form-control" min="2019-06-01T00:00" max="2029-06-01T00:00" required>
+          </div>
+          <div class="form-group">
+            <label for="fechaFin">Fecha Fin</label>
+            <input [ngModel]="evento.fechaFin | date:'yyyy-MM-ddTHH:mm'" (ngModelChange)="evento.fechaFin = dateChanged($event)" id="fechaFin" name="fechaFin" type="datetime-local" class="form-control" min="2019-06-01T00:00" max="2029-06-01T00:00">
+          </div>
+
+          <button type="submit" class="btn btn-primary waves-effect waves-light m-r-10">
+            <i class="fa fa-save"></i>
+            Guardar
+          </button>
+          <a routerLink="/pages/eventos" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row mt-2" *ngIf="!transiente">
+  <div class="col-md-3">
+    <div class="card card-body">
+      <h4 class="box-title m-b-0">Imagen</h4>
+      <div class="col">
+        <img *ngIf="evento.imagenId" (click)="cambiarFoto()" [src]="evento.imagenId.imgC | imagen" class="img-fluid nav-pointer">
+        <img *ngIf="!evento.imagenId" (click)="cambiarFoto()" [src]="'assets/img/empty-photo.jpg' | recurso" class="img-fluid nav-pointer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-imagen-modal></app-imagen-modal>

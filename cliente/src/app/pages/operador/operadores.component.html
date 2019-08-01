@@ -1,0 +1,56 @@
+
+
+<h2>Operadores</h2>
+<div class="row">
+
+  <div class="col-sm-12 col-lg-10 mb-4">
+    <div class="card shadow d-4">
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <button (click)="nuevoOperador()" class="btn btn-primary waves-effect waves-light m-r-10">
+          <i class="fa fa-plus"></i>
+          Nuevo
+        </button>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th style="width: auto">Nombre</th>
+                <th style="width: 15%">Clave</th>
+                <th style="width: 20%"></th>
+              </tr>
+            </thead>
+
+            <tbody *ngIf="operadores">
+              <tr *ngFor="let operador of operadores">
+                
+                <td>
+                  <h5>
+                    {{operador.nombre}}
+                  </h5>
+                </td>
+                <td>
+                  <h4>
+                    {{operador.clave}}
+                  </h4>
+                </td>
+                <td class="p-1">
+                    <button (click)="cambiaContrasena( operador )" class="btn btn-sm btn-warning">
+                        <i class="fa fa-key"></i>
+                      </button>
+                  <button [routerLink]="['/pages/operador', operador.id]" class="btn btn-sm btn-primary">
+                    <i class="fa fa-edit"></i>
+                  </button>
+                  <button (click)="borrarOperador( operador )" class="btn btn-sm btn-danger">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

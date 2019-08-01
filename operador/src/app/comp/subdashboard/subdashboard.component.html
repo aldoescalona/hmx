@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row text-center">
+        <div class="col">
+            <button type="button" class="btn btn-outline-dark" (click)=actualizaSubdashboard()>
+                <i class="fa fa-sync-alt fa-3x" [ngClass]="{'fa-spin':cargando}"></i>
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h2>Visitas</h2>
+            <div class="card mt-1" *ngFor="let v of dashboard ?.visitas">
+                <app-visita [cargando]=cargando (visitaCambio)="actualizaSubdashboard($event)" [visita]=v></app-visita>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <h2>Compras</h2>
+            <div class="card mt-1" *ngFor="let c of dashboard ?.compras">
+                <app-compra [cargando]=cargando (compraCambio)="actualizaSubdashboard($event)" [compra]=c></app-compra>
+            </div>
+        </div>
+    </div>
+</div>

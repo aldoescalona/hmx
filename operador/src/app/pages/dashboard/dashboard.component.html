@@ -1,0 +1,49 @@
+<!--<div class="container mt-2">
+    <div class="row" *ngIf="cargando">
+        <div class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h2>Visitas</h2>
+            <div class="card mt-1" *ngFor="let v of dashboard ?.visitas">
+                <app-visita [cargando]=cargando (visitaCambio)="actualizaDashboard($event)" [visita]=v></app-visita>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <h2>Compras</h2>
+            <div class="card mt-1" *ngFor="let c of dashboard ?.compras">
+                <app-compra [cargando]=cargando (compraCambio)="actualizaDashboard($event)" [compra]=c></app-compra>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
+<app-subdashboard [dashboard] = dashboard [cargando]=cargando (dashboardCambio)="actualizaDashboard($event)"></app-subdashboard>
+<!--<div class="fondo-negro animated fadeIn" [ngClass]="modalToggle">
+
+    <div class="modal" style="display: block;" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button (click)="cerrarModal()" type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <input (change)="seleccionImage($event.target.files[0])" type="file">
+                </div>
+                <div class="modal-footer">
+                    <button (click)="subirImagen()" [disabled]="!imagenTemp" type="button" class="btn btn-primary">Subir imagen</button>
+                    <button (click)="cerrarModal()" type="button" class="btn btn-secondary">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>-->
